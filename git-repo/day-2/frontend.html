@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+           gap: 20px;
+           margin: auto;
+            grid-template-columns: repeat(4,200px);
+            grid-template-rows: repeat(4,auto);
+            justify-content: space-around;
+        }
+
+        p,h3{
+            text-align: center;
+            height: 20px;
+            margin-top: -3px;
+        }
+       #container>div{
+           width: 200px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: 10px;
+        }
+        #img{
+            width: 100px;
+            padding-left: 50px;
+           margin-top: -10px;
+            
+        }
+        #img1{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+ 
+  var disdata = JSON.parse(localStorage.getItem("serverdata"));
+  console.log(disdata);
+
+
+ disdata.forEach(function(elem){
+
+  var box =  document.createElement("div");
+  var img = document.createElement("img");
+  img.setAttribute("src",elem.personimg);
+  img.setAttribute("id","img1");
+  var name = document.createElement("h3");
+  name.innerText = elem.personname;
+  var role = document.createElement("p");
+  role.innerText = elem.personrole;
+  var logo = document.createElement("img");
+  logo.setAttribute("src",elem.personlogo);
+  logo.setAttribute("id","img");
+
+   box.append(img,name,role,logo);
+
+   document.querySelector("#container").append(box);
+      
+
+ });
+
+
+
+
+
+
+</script>
